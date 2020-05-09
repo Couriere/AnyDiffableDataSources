@@ -55,7 +55,7 @@ class CollectionViewController: UIViewController {
 		posts <~ loadPosts()
 
 		// Обновляем список постов на экране в зависимости от строки поиска.
-		dataSource.items <~ posts.producer
+		dataSource.items( animatingDifferences: true ) <~ posts.producer
 			.combineLatest( with: self.searchBar.reactive.continuousTextValues.producer.prefix( value: "" ) )
 			.combineLatest( with: reactive.viewDidAppear ).map { $0.0 } // Выводим информацию только после появления на экране.
 			.map( { posts, searchText -> [ Post ] in

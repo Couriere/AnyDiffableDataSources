@@ -28,7 +28,8 @@ import ReactiveCocoa
 
 extension TableViewDiffableDataSource where SectionIdentifierType == Int {
 
-	open var items: BindingTarget<[ItemIdentifierType]> {
+	open func items( animatingDifferences: Bool = true,
+					 completion: ( () -> Void )? = nil ) -> BindingTarget<[ItemIdentifierType]> {
 		return BindingTarget( lifetime: Lifetime.of( self )) { [weak self] value in
 
 			guard let self = self else { return }
@@ -37,11 +38,14 @@ extension TableViewDiffableDataSource where SectionIdentifierType == Int {
 			snapshot.appendSections( [ 0 ] )
 			snapshot.appendItems( value, toSection: 0 )
 
-			UIScheduler().schedule { self.apply( snapshot ) }
+			UIScheduler().schedule {
+				self.apply( snapshot, animatingDifferences: animatingDifferences, completion: completion )
+			}
 		}
 	}
 
-	open var sectionsAndItems: BindingTarget<[[ItemIdentifierType]]> {
+	open func sectionsAndItems( animatingDifferences: Bool = true,
+								completion: ( () -> Void )? = nil ) -> BindingTarget<[[ItemIdentifierType]]> {
 		return BindingTarget( lifetime: Lifetime.of( self )) { [weak self] value in
 
 			guard let self = self else { return }
@@ -53,7 +57,9 @@ extension TableViewDiffableDataSource where SectionIdentifierType == Int {
 				snapshot.appendItems( items, toSection: index )
 			}
 
-			UIScheduler().schedule { self.apply( snapshot ) }
+			UIScheduler().schedule {
+				self.apply( snapshot, animatingDifferences: animatingDifferences, completion: completion )
+			}
 		}
 	}
 }
@@ -61,7 +67,8 @@ extension TableViewDiffableDataSource where SectionIdentifierType == Int {
 @available(iOS 13.0, *)
 extension UITableViewDiffableDataSource where SectionIdentifierType == Int {
 
-	open var items: BindingTarget<[ItemIdentifierType]> {
+	open func items( animatingDifferences: Bool = true,
+					 completion: ( () -> Void )? = nil ) -> BindingTarget<[ItemIdentifierType]> {
 		return BindingTarget( lifetime: Lifetime.of( self )) { [weak self] value in
 
 			guard let self = self else { return }
@@ -70,11 +77,14 @@ extension UITableViewDiffableDataSource where SectionIdentifierType == Int {
 			snapshot.appendSections( [ 0 ] )
 			snapshot.appendItems( value, toSection: 0 )
 
-			UIScheduler().schedule { self.apply( snapshot ) }
+			UIScheduler().schedule {
+				self.apply( snapshot, animatingDifferences: animatingDifferences, completion: completion )
+			}
 		}
 	}
 
-	open var sectionsAndItems: BindingTarget<[[ItemIdentifierType]]> {
+	open func sectionsAndItems( animatingDifferences: Bool = true,
+								completion: ( () -> Void )? = nil ) -> BindingTarget<[[ItemIdentifierType]]> {
 		return BindingTarget( lifetime: Lifetime.of( self )) { [weak self] value in
 
 			guard let self = self else { return }
@@ -86,7 +96,9 @@ extension UITableViewDiffableDataSource where SectionIdentifierType == Int {
 				snapshot.appendItems( items, toSection: index )
 			}
 
-			UIScheduler().schedule { self.apply( snapshot ) }
+			UIScheduler().schedule {
+				self.apply( snapshot, animatingDifferences: animatingDifferences, completion: completion )
+			}
 		}
 	}
 }
@@ -94,7 +106,8 @@ extension UITableViewDiffableDataSource where SectionIdentifierType == Int {
 @available(iOS 13.0, *)
 extension UITableViewDiffableDataSource {
 
-	open var sectionsAndItems: BindingTarget<[( SectionIdentifierType, [ ItemIdentifierType ] )]> {
+	open func sectionsAndItems( animatingDifferences: Bool = true,
+								completion: ( () -> Void )? = nil ) -> BindingTarget<[( SectionIdentifierType, [ ItemIdentifierType ] )]> {
 		return BindingTarget( lifetime: Lifetime.of( self )) { [weak self] value in
 
 			guard let self = self else { return }
@@ -103,7 +116,9 @@ extension UITableViewDiffableDataSource {
 			snapshot.appendSections( value.map { $0.0 } )
 			value.forEach { snapshot.appendItems( $1, toSection: $0 ) }
 
-			UIScheduler().schedule { self.apply( snapshot ) }
+			UIScheduler().schedule {
+				self.apply( snapshot, animatingDifferences: animatingDifferences, completion: completion )
+			}
 		}
 	}
 }
@@ -112,7 +127,8 @@ extension UITableViewDiffableDataSource {
 
 extension CollectionViewDiffableDataSource where SectionIdentifierType == Int {
 
-	open var items: BindingTarget<[ItemIdentifierType]> {
+	open func items( animatingDifferences: Bool = true,
+					 completion: ( () -> Void )? = nil ) -> BindingTarget<[ItemIdentifierType]> {
 		return BindingTarget( lifetime: Lifetime.of( self )) { [weak self] value in
 
 			guard let self = self else { return }
@@ -121,11 +137,14 @@ extension CollectionViewDiffableDataSource where SectionIdentifierType == Int {
 			snapshot.appendSections( [ 0 ] )
 			snapshot.appendItems( value, toSection: 0 )
 
-			UIScheduler().schedule { self.apply( snapshot ) }
+			UIScheduler().schedule {
+				self.apply( snapshot, animatingDifferences: animatingDifferences, completion: completion )
+			}
 		}
 	}
 
-	open var sectionsAndItems: BindingTarget<[[ItemIdentifierType]]> {
+	open func sectionsAndItems( animatingDifferences: Bool = true,
+								completion: ( () -> Void )? = nil ) -> BindingTarget<[[ItemIdentifierType]]> {
 		return BindingTarget( lifetime: Lifetime.of( self )) { [weak self] value in
 
 			guard let self = self else { return }
@@ -137,7 +156,9 @@ extension CollectionViewDiffableDataSource where SectionIdentifierType == Int {
 				snapshot.appendItems( items, toSection: index )
 			}
 
-			UIScheduler().schedule { self.apply( snapshot ) }
+			UIScheduler().schedule {
+				self.apply( snapshot, animatingDifferences: animatingDifferences, completion: completion )
+			}
 		}
 	}
 }
@@ -145,7 +166,8 @@ extension CollectionViewDiffableDataSource where SectionIdentifierType == Int {
 @available(iOS 13.0, *)
 extension UICollectionViewDiffableDataSource where SectionIdentifierType == Int {
 
-	open var items: BindingTarget<[ItemIdentifierType]> {
+	open func items( animatingDifferences: Bool = true,
+					 completion: ( () -> Void )? = nil ) -> BindingTarget<[ItemIdentifierType]> {
 		return BindingTarget( lifetime: Lifetime.of( self )) { [weak self] value in
 
 			guard let self = self else { return }
@@ -154,11 +176,14 @@ extension UICollectionViewDiffableDataSource where SectionIdentifierType == Int 
 			snapshot.appendSections( [ 0 ] )
 			snapshot.appendItems( value, toSection: 0 )
 
-			UIScheduler().schedule { self.apply( snapshot ) }
+			UIScheduler().schedule {
+				self.apply( snapshot, animatingDifferences: animatingDifferences, completion: completion )
+			}
 		}
 	}
 
-	open var sectionsAndItems: BindingTarget<[[ItemIdentifierType]]> {
+	open func sectionsAndItems( animatingDifferences: Bool = true,
+								completion: ( () -> Void )? = nil ) -> BindingTarget<[[ItemIdentifierType]]> {
 		return BindingTarget( lifetime: Lifetime.of( self )) { [weak self] value in
 
 			guard let self = self else { return }
@@ -170,7 +195,9 @@ extension UICollectionViewDiffableDataSource where SectionIdentifierType == Int 
 				snapshot.appendItems( items, toSection: index )
 			}
 
-			UIScheduler().schedule { self.apply( snapshot ) }
+			UIScheduler().schedule {
+				self.apply( snapshot, animatingDifferences: animatingDifferences, completion: completion )
+			}
 		}
 	}
 }
@@ -178,7 +205,8 @@ extension UICollectionViewDiffableDataSource where SectionIdentifierType == Int 
 @available(iOS 13.0, *)
 extension UICollectionViewDiffableDataSource {
 
-	open var sectionsAndItems: BindingTarget<[( SectionIdentifierType, [ ItemIdentifierType ] )]> {
+	open func sectionsAndItems( animatingDifferences: Bool = true,
+								completion: ( () -> Void )? = nil ) -> BindingTarget<[( SectionIdentifierType, [ ItemIdentifierType ] )]> {
 		return BindingTarget( lifetime: Lifetime.of( self )) { [weak self] value in
 
 			guard let self = self else { return }
@@ -187,7 +215,9 @@ extension UICollectionViewDiffableDataSource {
 			snapshot.appendSections( value.map { $0.0 } )
 			value.forEach { snapshot.appendItems( $1, toSection: $0 ) }
 
-			UIScheduler().schedule { self.apply( snapshot ) }
+			UIScheduler().schedule {
+				self.apply( snapshot, animatingDifferences: animatingDifferences, completion: completion )
+			}
 		}
 	}
 }

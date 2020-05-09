@@ -53,7 +53,7 @@ class TableViewController: UIViewController {
 		posts <~ loadPosts().map { $0.sorted { $0.title < $1.title }}
 
 		// Обновляем список постов на экране в зависимости от строки поиска.
-		dataSource.sectionsAndItems <~ posts.producer
+		dataSource.sectionsAndItems() <~ posts.producer
 			.combineLatest( with: self.searchController.searchBar.reactive.continuousTextValues.producer.prefix( value: "" ) )
 			.combineLatest( with: reactive.viewDidAppear ).map { $0.0 } // Выводим информацию только после появления на экране.
 			.map( { posts, searchText -> [ Post ] in
