@@ -27,7 +27,7 @@ import AnyDiffabeDataSources
 import ReactiveAnyDiffableDataSources
 
 
-class TableViewController: UIViewController {
+class TableViewController: KeyboardAwareViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -43,55 +43,73 @@ class TableViewController: UIViewController {
 			tableView, indexPath, post in
 
 			let cell = tableView.dequeueReusableCell( withIdentifier: "PostTableCell", for: indexPath ) as! PostTableCell
-			cell.title = post.title
+			cell.title = post.post.title
+			cell.subtitle = post.post.body
+			cell.isExpanded = post.isExpanded
 
 			return cell
 		}
+		dataSource.defaultRowAnimation = .fade
 
 
-		// Загружаем посты.
-		posts <~ loadPosts().map { $0.sorted { $0.title < $1.title }}
-
-		// Обновляем список постов на экране в зависимости от строки поиска.
-		dataSource.sectionsAndItems() <~ posts.producer
-			.combineLatest( with: self.searchController.searchBar.reactive.continuousTextValues.producer.prefix( value: "" ) )
-			.combineLatest( with: reactive.viewDidAppear ).map { $0.0 } // Выводим информацию только после появления на экране.
-			.map( { posts, searchText -> [ Post ] in
-				guard let query = searchText, !query.isEmpty else { return posts }
-				return posts.filter { $0.title.range( of: query, options: .caseInsensitive ) != nil }
-			})
-			.map { Dictionary( grouping: $0, by: { String( $0.title.first?.uppercased() ?? " " ) }) }
+		// Загружаем посты и обновляем список постов на экране в зависимости от строки поиска.
+		dataSource.sectionsAndItems() <~ loadPosts()
+			.map { $0.sorted { $0.post.title < $1.post.title }}
+			.combineLatest( with: searchQueryProducer() )
+			// Showing rows only after view did appear on screen.
+			.combineLatest( with: reactive.viewDidAppear ).map { $0.0 }
+			.map( filterItems )
+			.map { Dictionary( grouping: $0, by: { String( $0.post.title.first?.uppercased() ?? " " ) }) }
 			.map { $0.map { ($0, $1) }.sorted { $0.0 < $1.0 } }
-
-		// При появлении экрана прячем строку поиска под Navigation bar.
-		reactive.viewDidLayoutSubviews
-			.take( first: 1 )
-			.observeValues { [unowned self] in
-				self.tableView.contentOffset =
-					CGPoint( x: 0,
-							 y: self.searchController.searchBar.frame.height - self.tableView.adjustedContentInset.top )
-		}
 	}
 
-	private func loadPosts() -> SignalProducer<[Post], Never> {
+	private func loadPosts() -> SignalProducer<[_Post], Never> {
 		return URLSession(configuration: .default).reactive
 			.data( with: URLRequest( url: URL( string: "https://jsonplaceholder.typicode.com/posts" )! ))
 			.attemptMap { data, _ in try JSONDecoder().decode( [Post].self, from: data ) }
+			.map { $0.map( _Post.init ) }
 			.flatMapError { _ in SignalProducer( value: [] ) }
+	}
+	
+	private func searchQueryProducer() -> SignalProducer<String?, Never> {
+		return searchController.searchBar.reactive.continuousTextValues
+			.merge( with: searchController.searchBar.reactive.cancelButtonClicked.map { "" } )
+			.producer
+			.prefix( value: "" )
+	}
+	
+	private func filterItems( _ items: [ _Post ], with searchQuery: String? ) -> [ _Post ] {
+		
+		guard let searchQuery = searchQuery, !searchQuery.isEmpty else { return items }
+		
+		let options: String.CompareOptions = [ .caseInsensitive, .diacriticInsensitive ]
+		return items
+			.filter( {
+				$0.post.title.range( of: searchQuery, options: options ) != nil ||
+					$0.post.body.range( of: searchQuery, options: options ) != nil
+			})
 	}
 
 
 	@IBOutlet private var tableView: UITableView!
 	private let searchController = UISearchController( searchResultsController: nil )
-	private var dataSource: AnyTableViewDiffableDataSource<String, Post>!
-
-
-	private let posts = MutableProperty<[ Post ]>( [] )
+	private var dataSource: AnyTableViewDiffableDataSource<String, _Post>!
+	
+	private struct _Post: Hashable {
+		let post: Post
+		var isExpanded: Bool
+		
+		init( post: Post ) {
+			self.post = post
+			self.isExpanded = false
+		}
+	}
 }
 
 extension TableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow( at: indexPath, animated: true )
+		dataSource.replaceItem( at: indexPath ) { $0.isExpanded.toggle() }
 	}
 
 	func tableView( _ tableView: UITableView, viewForHeaderInSection section: Int ) -> UIView? {
@@ -109,7 +127,22 @@ class PostTableCell: UITableViewCell {
 		set { titleLabel.text = newValue }
 	}
 
+	var subtitle: String {
+		get { subtitleLabel.text ?? "" }
+		set { subtitleLabel.text = newValue }
+	}
+	
+	var isExpanded: Bool {
+		get { !subtitleLabel.isHidden }
+		set {
+			subtitleLabel.isHidden = !newValue
+			arrowImageView.transform = CGAffineTransform( rotationAngle: newValue ? .pi : 0 )
+		}
+	}
+
 	@IBOutlet private var titleLabel: UILabel!
+	@IBOutlet private var subtitleLabel: UILabel!
+	@IBOutlet private var arrowImageView: UIImageView!
 }
 
 class SectionHeaderView: UITableViewHeaderFooterView {
@@ -122,9 +155,16 @@ class SectionHeaderView: UITableViewHeaderFooterView {
 	override init( reuseIdentifier: String? ) {
 		super.init( reuseIdentifier: reuseIdentifier )
 
-		contentView.backgroundColor = UIColor( red: 0.933, green: 0.925, blue: 0.91, alpha: 1 )
 		contentView.addSubview( titleLabel )
 		titleLabel.font = UIFont( name: "GillSans-SemiBold", size: 15 )
+		
+		if #available(iOS 13.0, *) {
+			contentView.backgroundColor = .systemGray5
+			titleLabel.textColor = .label
+		} else {
+			contentView.backgroundColor = UIColor( red: 0.933, green: 0.925, blue: 0.91, alpha: 1 )
+		}
+
 	}
 
 	required init?(coder: NSCoder) {

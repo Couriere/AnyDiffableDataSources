@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		AA17E5B124548B7900BD0254 /* AnyTableViewDiffableDataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA34CFD9244DB10F00FA5D08 /* AnyTableViewDiffableDataSources.swift */; };
 		AA17E5B224548B7900BD0254 /* AnyCollectionViewDiffableDataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA34CFDC244DB3A200FA5D08 /* AnyCollectionViewDiffableDataSources.swift */; };
+		AA20EC7B24AF546A005DFFD3 /* DiffableDataSourceSnapshot+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA20EC7A24AF546A005DFFD3 /* DiffableDataSourceSnapshot+Extension.swift */; };
 		AA34CFBF244DAE9300FA5D08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA34CFBE244DAE9300FA5D08 /* AppDelegate.swift */; };
 		AA34CFC3244DAE9300FA5D08 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA34CFC2244DAE9300FA5D08 /* CollectionViewController.swift */; };
 		AA34CFC6244DAE9300FA5D08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA34CFC4244DAE9300FA5D08 /* Main.storyboard */; };
 		AA34CFC8244DAE9D00FA5D08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA34CFC7244DAE9D00FA5D08 /* Assets.xcassets */; };
 		AA34CFCB244DAE9D00FA5D08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA34CFC9244DAE9D00FA5D08 /* LaunchScreen.storyboard */; };
 		AA34CFE0244DE52000FA5D08 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA34CFDF244DE52000FA5D08 /* TableViewController.swift */; };
+		AA50865B24AF60D900E36449 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA50865924AF604200E36449 /* Post.swift */; };
+		AA50865D24AF7B9C00E36449 /* KeyboardAwareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA50865C24AF7B9B00E36449 /* KeyboardAwareViewController.swift */; };
 		AAEDBCCC2457339100455875 /* libAnyDiffabeDataSources.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA17E5AA24548B5200BD0254 /* libAnyDiffabeDataSources.a */; };
 		AAEDBCCD2457339A00455875 /* DiffableDataSources+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA34CFD8244DB10F00FA5D08 /* DiffableDataSources+Reactive.swift */; };
 		AAEDBCCE245733A000455875 /* AnyDiffableDataSources+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEDBCC02457313800455875 /* AnyDiffableDataSources+Reactive.swift */; };
@@ -57,6 +60,7 @@
 /* Begin PBXFileReference section */
 		AA17E5A52454870700BD0254 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		AA17E5AA24548B5200BD0254 /* libAnyDiffabeDataSources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAnyDiffabeDataSources.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA20EC7A24AF546A005DFFD3 /* DiffableDataSourceSnapshot+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiffableDataSourceSnapshot+Extension.swift"; sourceTree = "<group>"; };
 		AA34CFBB244DAE9300FA5D08 /* AnyDiffabeDataSourcesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyDiffabeDataSourcesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA34CFBE244DAE9300FA5D08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA34CFC0244DAE9300FA5D08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 		AA34CFD9244DB10F00FA5D08 /* AnyTableViewDiffableDataSources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTableViewDiffableDataSources.swift; sourceTree = "<group>"; };
 		AA34CFDC244DB3A200FA5D08 /* AnyCollectionViewDiffableDataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCollectionViewDiffableDataSources.swift; sourceTree = "<group>"; };
 		AA34CFDF244DE52000FA5D08 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		AA50865924AF604200E36449 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		AA50865C24AF7B9B00E36449 /* KeyboardAwareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAwareViewController.swift; sourceTree = "<group>"; };
 		AAEDBCC02457313800455875 /* AnyDiffableDataSources+Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyDiffableDataSources+Reactive.swift"; sourceTree = "<group>"; };
 		AAEDBCC52457337F00455875 /* libReactiveAnyDiffableDataSources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReactiveAnyDiffableDataSources.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -129,8 +135,10 @@
 			children = (
 				AA34CFBE244DAE9300FA5D08 /* AppDelegate.swift */,
 				AA34CFC0244DAE9300FA5D08 /* SceneDelegate.swift */,
+				AA50865924AF604200E36449 /* Post.swift */,
 				AA34CFC2244DAE9300FA5D08 /* CollectionViewController.swift */,
 				AA34CFDF244DE52000FA5D08 /* TableViewController.swift */,
+				AA50865C24AF7B9B00E36449 /* KeyboardAwareViewController.swift */,
 				AA34CFC4244DAE9300FA5D08 /* Main.storyboard */,
 				AA34CFC7244DAE9D00FA5D08 /* Assets.xcassets */,
 				AA34CFC9244DAE9D00FA5D08 /* LaunchScreen.storyboard */,
@@ -144,6 +152,7 @@
 			children = (
 				AA34CFD9244DB10F00FA5D08 /* AnyTableViewDiffableDataSources.swift */,
 				AA34CFDC244DB3A200FA5D08 /* AnyCollectionViewDiffableDataSources.swift */,
+				AA20EC7A24AF546A005DFFD3 /* DiffableDataSourceSnapshot+Extension.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -291,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA17E5B224548B7900BD0254 /* AnyCollectionViewDiffableDataSources.swift in Sources */,
+				AA20EC7B24AF546A005DFFD3 /* DiffableDataSourceSnapshot+Extension.swift in Sources */,
 				AA17E5B124548B7900BD0254 /* AnyTableViewDiffableDataSources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +312,8 @@
 				AA34CFE0244DE52000FA5D08 /* TableViewController.swift in Sources */,
 				AA34CFC3244DAE9300FA5D08 /* CollectionViewController.swift in Sources */,
 				AA34CFBF244DAE9300FA5D08 /* AppDelegate.swift in Sources */,
+				AA50865D24AF7B9C00E36449 /* KeyboardAwareViewController.swift in Sources */,
+				AA50865B24AF60D900E36449 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
