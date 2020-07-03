@@ -57,12 +57,12 @@ open class AnyTableViewDiffableDataSource<SectionIdentifierType, ItemIdentifierT
 			_cellForRowAtIndexPath = base.tableView(_:cellForRowAt:)
 			_titleForHeaderInSection = base.tableView(_:titleForHeaderInSection:)
 			_titleForFooterInSection = base.tableView(_:titleForFooterInSection:)
-			_canEditRowAt = { _, _ in false }
-			_commit = { _, _, _ in }
-			_canMoveRowAt = { _, _ in false }
-			_moveRowAt = { _, _, _ in }
+			_canEditRowAt = base.tableView(_:canEditRowAt:)
+			_commit = base.tableView(_:commit:forRowAt:)
+			_canMoveRowAt = base.tableView(_:canMoveRowAt:)
+			_moveRowAt = base.tableView(_:moveRowAt:to:)
 			_sectionIndexTitles = { _ in nil }
-			_sectionForSectionIndexTitle = { _, _, _ in 0 }
+			_sectionForSectionIndexTitle = base.tableView(_:sectionForSectionIndexTitle:at:)
 			_description = { base.description }
 
 			self.base = base
@@ -231,5 +231,22 @@ extension UITableViewDiffableDataSource {
 		apply( newSnapshot,
 			   animatingDifferences: animatingDifferences,
 			   completion: completion )
+	}
+}
+
+/// Change or replace item in the datasource with updated version.
+/// - Parameters:
+///   - indexPath: Index path of an item to change or replace.
+///   - animatingDifferences: Animate change to item. Default is `true`.
+///   - update: A closure that can change or replace provided item.
+extension AnyTableViewDiffableDataSource {
+	open func replaceItem( at indexPath: IndexPath,
+						   animatingDifferences: Bool = true,
+						   with update: @escaping ( inout ItemIdentifierType ) -> Void ) {
+		
+		guard let identifier = itemIdentifier( for: indexPath ) else { return }
+		var newSnapshot = snapshot()
+		newSnapshot.updateItem( identifier, with: update )
+		apply( newSnapshot, animatingDifferences: animatingDifferences )
 	}
 }

@@ -210,3 +210,21 @@ extension UICollectionViewDiffableDataSource {
 			   completion: completion )
 	}
 }
+
+extension AnyCollectionViewDiffableDataSource {
+
+	/// Change or replace item in the datasource with updated version.
+	/// - Parameters:
+	///   - indexPath: Index path of an item to change or replace.
+	///   - animatingDifferences: Animate change to item. Default is `true`.
+	///   - update: A closure that can change or replace provided item.
+	open func replaceItem( at indexPath: IndexPath,
+						   animatingDifferences: Bool = true,
+						   with update: @escaping ( inout ItemIdentifierType ) -> Void ) {
+
+		guard let identifier = itemIdentifier( for: indexPath ) else { return }
+		var newSnapshot = snapshot()
+		newSnapshot.updateItem( identifier, with: update )
+		apply( newSnapshot, animatingDifferences: animatingDifferences )
+	}
+}
