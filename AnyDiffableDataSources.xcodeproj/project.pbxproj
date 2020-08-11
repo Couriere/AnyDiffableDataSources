@@ -18,7 +18,7 @@
 		AA34CFE0244DE52000FA5D08 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA34CFDF244DE52000FA5D08 /* TableViewController.swift */; };
 		AA50865B24AF60D900E36449 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA50865924AF604200E36449 /* Post.swift */; };
 		AA50865D24AF7B9C00E36449 /* KeyboardAwareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA50865C24AF7B9B00E36449 /* KeyboardAwareViewController.swift */; };
-		AAEDBCCC2457339100455875 /* libAnyDiffabeDataSources.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA17E5AA24548B5200BD0254 /* libAnyDiffabeDataSources.a */; };
+		AAEDBCCC2457339100455875 /* libAnyDiffableDataSources.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA17E5AA24548B5200BD0254 /* libAnyDiffableDataSources.a */; };
 		AAEDBCCD2457339A00455875 /* DiffableDataSources+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA34CFD8244DB10F00FA5D08 /* DiffableDataSources+Reactive.swift */; };
 		AAEDBCCE245733A000455875 /* AnyDiffableDataSources+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEDBCC02457313800455875 /* AnyDiffableDataSources+Reactive.swift */; };
 		AAEDBCD02457340400455875 /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AAEDBCCF2457340400455875 /* ReactiveCocoa */; };
@@ -59,9 +59,9 @@
 
 /* Begin PBXFileReference section */
 		AA17E5A52454870700BD0254 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		AA17E5AA24548B5200BD0254 /* libAnyDiffabeDataSources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAnyDiffabeDataSources.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA17E5AA24548B5200BD0254 /* libAnyDiffableDataSources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAnyDiffableDataSources.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA20EC7A24AF546A005DFFD3 /* DiffableDataSourceSnapshot+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiffableDataSourceSnapshot+Extension.swift"; sourceTree = "<group>"; };
-		AA34CFBB244DAE9300FA5D08 /* AnyDiffabeDataSourcesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyDiffabeDataSourcesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA34CFBB244DAE9300FA5D08 /* AnyDiffableDataSourcesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyDiffableDataSourcesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA34CFBE244DAE9300FA5D08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA34CFC0244DAE9300FA5D08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AA34CFC2244DAE9300FA5D08 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEDBCCC2457339100455875 /* libAnyDiffabeDataSources.a in Frameworks */,
+				AAEDBCCC2457339100455875 /* libAnyDiffableDataSources.a in Frameworks */,
 				AAEDBCD02457340400455875 /* ReactiveCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,8 +123,8 @@
 		AA34CFBC244DAE9300FA5D08 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA34CFBB244DAE9300FA5D08 /* AnyDiffabeDataSourcesExample.app */,
-				AA17E5AA24548B5200BD0254 /* libAnyDiffabeDataSources.a */,
+				AA34CFBB244DAE9300FA5D08 /* AnyDiffableDataSourcesExample.app */,
+				AA17E5AA24548B5200BD0254 /* libAnyDiffableDataSources.a */,
 				AAEDBCC52457337F00455875 /* libReactiveAnyDiffableDataSources.a */,
 			);
 			name = Products;
@@ -176,9 +176,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA17E5A924548B5200BD0254 /* AnyDiffabeDataSources */ = {
+		AA17E5A924548B5200BD0254 /* AnyDiffableDataSources */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA17E5AE24548B5200BD0254 /* Build configuration list for PBXNativeTarget "AnyDiffabeDataSources" */;
+			buildConfigurationList = AA17E5AE24548B5200BD0254 /* Build configuration list for PBXNativeTarget "AnyDiffableDataSources" */;
 			buildPhases = (
 				AA17E5A624548B5200BD0254 /* Sources */,
 				AA17E5A724548B5200BD0254 /* Frameworks */,
@@ -188,17 +188,17 @@
 			);
 			dependencies = (
 			);
-			name = AnyDiffabeDataSources;
+			name = AnyDiffableDataSources;
 			packageProductDependencies = (
 				AAEDBCD12457354C00455875 /* DiffableDataSources */,
 			);
 			productName = AnyDiffabeDataSource2;
-			productReference = AA17E5AA24548B5200BD0254 /* libAnyDiffabeDataSources.a */;
+			productReference = AA17E5AA24548B5200BD0254 /* libAnyDiffableDataSources.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		AA34CFBA244DAE9300FA5D08 /* AnyDiffabeDataSourcesExample */ = {
+		AA34CFBA244DAE9300FA5D08 /* AnyDiffableDataSourcesExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA34CFCF244DAE9D00FA5D08 /* Build configuration list for PBXNativeTarget "AnyDiffabeDataSourcesExample" */;
+			buildConfigurationList = AA34CFCF244DAE9D00FA5D08 /* Build configuration list for PBXNativeTarget "AnyDiffableDataSourcesExample" */;
 			buildPhases = (
 				AA34CFB7244DAE9300FA5D08 /* Sources */,
 				AA34CFB8244DAE9300FA5D08 /* Frameworks */,
@@ -209,11 +209,11 @@
 			dependencies = (
 				AAEDBCD52457364500455875 /* PBXTargetDependency */,
 			);
-			name = AnyDiffabeDataSourcesExample;
+			name = AnyDiffableDataSourcesExample;
 			packageProductDependencies = (
 			);
 			productName = AnyDiffabeDataSource;
-			productReference = AA34CFBB244DAE9300FA5D08 /* AnyDiffabeDataSourcesExample.app */;
+			productReference = AA34CFBB244DAE9300FA5D08 /* AnyDiffableDataSourcesExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AAEDBCC42457337F00455875 /* ReactiveAnyDiffableDataSources */ = {
@@ -257,7 +257,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AA34CFB6244DAE9200FA5D08 /* Build configuration list for PBXProject "AnyDiffabeDataSources" */;
+			buildConfigurationList = AA34CFB6244DAE9200FA5D08 /* Build configuration list for PBXProject "AnyDiffableDataSources" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -274,9 +274,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AA17E5A924548B5200BD0254 /* AnyDiffabeDataSources */,
+				AA17E5A924548B5200BD0254 /* AnyDiffableDataSources */,
 				AAEDBCC42457337F00455875 /* ReactiveAnyDiffableDataSources */,
-				AA34CFBA244DAE9300FA5D08 /* AnyDiffabeDataSourcesExample */,
+				AA34CFBA244DAE9300FA5D08 /* AnyDiffableDataSourcesExample */,
 			);
 		};
 /* End PBXProject section */
@@ -575,7 +575,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA17E5AE24548B5200BD0254 /* Build configuration list for PBXNativeTarget "AnyDiffabeDataSources" */ = {
+		AA17E5AE24548B5200BD0254 /* Build configuration list for PBXNativeTarget "AnyDiffableDataSources" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA17E5AF24548B5200BD0254 /* Debug */,
@@ -584,7 +584,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA34CFB6244DAE9200FA5D08 /* Build configuration list for PBXProject "AnyDiffabeDataSources" */ = {
+		AA34CFB6244DAE9200FA5D08 /* Build configuration list for PBXProject "AnyDiffableDataSources" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA34CFCD244DAE9D00FA5D08 /* Debug */,
@@ -593,7 +593,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA34CFCF244DAE9D00FA5D08 /* Build configuration list for PBXNativeTarget "AnyDiffabeDataSourcesExample" */ = {
+		AA34CFCF244DAE9D00FA5D08 /* Build configuration list for PBXNativeTarget "AnyDiffableDataSourcesExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA34CFD0244DAE9D00FA5D08 /* Debug */,
@@ -619,7 +619,7 @@
 			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveCocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.2.0;
+				minimumVersion = 11.0.0;
 			};
 		};
 		AA34CFD5244DB06A00FA5D08 /* XCRemoteSwiftPackageReference "DiffableDataSources" */ = {

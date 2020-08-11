@@ -25,7 +25,7 @@ import UIKit
 import DiffableDataSources
 import ReactiveSwift
 import ReactiveCocoa
-import AnyDiffabeDataSources
+import AnyDiffableDataSources
 
 extension AnyTableViewDiffableDataSource where SectionIdentifierType == Int {
 

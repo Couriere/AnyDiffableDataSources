@@ -23,7 +23,7 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
-import AnyDiffabeDataSources
+import AnyDiffableDataSources
 import ReactiveAnyDiffableDataSources
 
 
