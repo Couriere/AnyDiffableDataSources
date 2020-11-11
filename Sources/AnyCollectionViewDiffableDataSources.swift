@@ -193,7 +193,7 @@ open class AnyCollectionViewDiffableDataSource<SectionIdentifierType, ItemIdenti
 	private let _indexPathForItemIdentifier: (ItemIdentifierType) -> IndexPath?
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13, tvOS 13, *)
 extension UICollectionViewDiffableDataSource {
 
 	open func apply( _ snapshot: DiffableDataSourceSnapshot<SectionIdentifierType, ItemIdentifierType>,

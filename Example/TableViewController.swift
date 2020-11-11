@@ -158,7 +158,7 @@ class SectionHeaderView: UITableViewHeaderFooterView {
 		contentView.addSubview( titleLabel )
 		titleLabel.font = UIFont( name: "GillSans-SemiBold", size: 15 )
 		
-		if #available(iOS 13.0, *) {
+		if #available(iOS 13, tvOS 13, *) {
 			contentView.backgroundColor = .systemGray5
 			titleLabel.textColor = .label
 		} else {

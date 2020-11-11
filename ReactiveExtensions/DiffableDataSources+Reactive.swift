@@ -64,7 +64,7 @@ extension TableViewDiffableDataSource where SectionIdentifierType == Int {
 	}
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13, tvOS 13, *)
 extension UITableViewDiffableDataSource where SectionIdentifierType == Int {
 
 	open func items( animatingDifferences: Bool = true,
@@ -103,7 +103,7 @@ extension UITableViewDiffableDataSource where SectionIdentifierType == Int {
 	}
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13, tvOS 13, *)
 extension UITableViewDiffableDataSource {
 
 	open func sectionsAndItems( animatingDifferences: Bool = true,
@@ -163,7 +163,7 @@ extension CollectionViewDiffableDataSource where SectionIdentifierType == Int {
 	}
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13, tvOS 13, *)
 extension UICollectionViewDiffableDataSource where SectionIdentifierType == Int {
 
 	open func items( animatingDifferences: Bool = true,
@@ -202,7 +202,7 @@ extension UICollectionViewDiffableDataSource where SectionIdentifierType == Int 
 	}
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13, tvOS 13, *)
 extension UICollectionViewDiffableDataSource {
 
 	open func sectionsAndItems( animatingDifferences: Bool = true,
