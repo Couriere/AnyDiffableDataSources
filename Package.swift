@@ -9,8 +9,8 @@ let package = Package(
 		.library( name: "ReactiveAnyDiffableDataSources", targets: ["ReactiveAnyDiffableDataSources"] ),
 	],
 	dependencies: [
-		.package(url: "https://github.com/ra1028/DiffableDataSources", from: "0.4.0"),
-		.package(url: "https://github.com/ReactiveCocoa/ReactiveCocoa", from: "11.0.0"),
+		.package(url: "https://github.com/ra1028/DiffableDataSources", from: "0.5.0"),
+		.package(url: "https://github.com/ReactiveCocoa/ReactiveCocoa", from: "12.0.0"),
 	],
 	targets: [
 		.target( name: "AnyDiffableDataSources", dependencies: ["DiffableDataSources"], path: "Sources" ),
